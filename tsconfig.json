@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "./build",
+    "removeComments": true,
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": true,
+    "baseUrl": ".",
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "paths": {
+      "app/*": ["./src/*"]
+    },
+    "incremental": true,
+    "types": ["reflect-metadata"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "./src/**/*.ts",
+  ],
+  "exclude": [
+    "./node_modules"
+  ]
+}
