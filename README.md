@@ -1,6 +1,7 @@
 # NSFW API
 
 [![build](https://github.com/arnidan/nsfw-api/actions/workflows/build.yml/badge.svg)](https://github.com/arnidan/nsfw-api/actions/workflows/build.yml)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](https://www.typescriptlang.org/)
 
 Wrapper around [NSFWJS](https://github.com/infinitered/nsfwjs) to provide API.
 
@@ -8,14 +9,35 @@ Wrapper around [NSFWJS](https://github.com/infinitered/nsfwjs) to provide API.
 
 ### Docker
 
+There is docker image bundled with model v3 from https://github.com/gantman/nsfw_model.
 
+```
+docker run -p 3000:3000 ghcr.io/arnidan/nsfw-api:latest
+```
+
+<details>
+    <summary>docker-compose.yml example</summary>
+
+```yaml
+version: "3.9"
+
+services:
+  nsfw-api:
+    image: "ghcr.io/arnidan/nsfw-api:latest"
+    ports:
+      - "3000:3000"
+    restart: always
+```
+
+</details>
 
 ### Manual deploy
 
 1. Clone the repo
-2. `yarn`
-3. `yarn build`
-4. `yarn start`
+2. Download and unpack model from [models repo](https://github.com/gantman/nsfw_model) to `model` folder
+3. `yarn`
+4. `yarn build`
+5. `yarn start`
 
 Now app started on port 3000.
 
