@@ -1,5 +1,7 @@
 # NSFW API
 
+[![build](https://github.com/arnidan/nsfw-api/actions/workflows/build.yml/badge.svg)](https://github.com/arnidan/nsfw-api/actions/workflows/build.yml)
+
 Wrapper around [NSFWJS](https://github.com/infinitered/nsfwjs) to provide API.
 
 ## Usage
