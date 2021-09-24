@@ -6,6 +6,7 @@ on:
       - master
 
 env:
+  DOCKER_BUILDKIT: 1
   IMAGE_NAME: nsfw-api
 
 jobs:

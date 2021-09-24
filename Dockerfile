@@ -3,7 +3,7 @@ FROM node:lts-slim
 RUN apt-get update && apt-get install -y python3 build-essential wget unzip \
     && rm -rf /var/lib/apt/lists/*
 
-COPY yarn.lock package.json .
+COPY yarn.lock package.json ./
 
 RUN yarn install --prod
 
