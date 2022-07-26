@@ -42,4 +42,4 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
-          docker buildx build -t $IMAGE_ID:$VERSION -f Dockerfile --push --platform=linux/arm64,linux/amd64 .
+          docker buildx build -t $IMAGE_ID:$VERSION -f Dockerfile --push --cache-from=type=gha --cache-to=type=gha --platform=linux/arm64,linux/amd64 .
