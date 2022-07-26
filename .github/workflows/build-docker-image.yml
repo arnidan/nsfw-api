@@ -2,8 +2,9 @@ name: build docker image
 
 on:
   push:
-#    branches:
-#      - master
+    branches:
+      - master
+  pull_request:
 
 env:
   IMAGE_NAME: nsfw-api
