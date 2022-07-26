@@ -9,7 +9,7 @@ Wrapper around [NSFWJS](https://github.com/infinitered/nsfwjs) to provide API.
 
 ### Docker
 
-There is docker image bundled with model v3 from https://github.com/gantman/nsfw_model.
+There is docker image bundled with model v3 from https://github.com/gantman/nsfw_model. Image is available for `linux/amd64` and `linux/arm64` platforms.
 
 ```
 docker run -p 3000:3000 ghcr.io/arnidan/nsfw-api:latest
