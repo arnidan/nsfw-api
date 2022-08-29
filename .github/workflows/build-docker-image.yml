@@ -29,7 +29,8 @@ jobs:
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Build & Push Docker image
+      - name: Prepare
+        id: prepare
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 
@@ -42,4 +43,14 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
-          docker buildx build -t $IMAGE_ID:$VERSION -f Dockerfile --push --cache-from=type=gha --cache-to=type=gha --platform=linux/arm64,linux/amd64 .
+          echo ::set-output name=image::$IMAGE_ID:$VERSION
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.prepare.outputs.image }}
+          platform: platform=linux/arm64,linux/amd64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
