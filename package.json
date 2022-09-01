@@ -22,7 +22,7 @@
     "ioredis": "^4.27.9",
     "module-alias": "^2.2.2",
     "multer": "^1.4.4",
-    "nsfwjs": "^2.4.1",
+    "nsfwjs": "^2.4.2",
     "reflect-metadata": "^0.1.13",
     "simple-ts-express-decorators": "next",
     "typescript": "^4.4.2"
