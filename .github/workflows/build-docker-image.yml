@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
 
 env:
   IMAGE_NAME: nsfw-api
@@ -51,6 +50,6 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.prepare.outputs.image }}
-          platforms: platform=linux/arm64,linux/amd64
+          platforms: linux/arm64,linux/amd64
           cache-from: type=gha
           cache-to: type=gha,mode=max
