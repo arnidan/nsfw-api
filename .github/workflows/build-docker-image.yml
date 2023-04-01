@@ -10,6 +10,9 @@ env:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        model_type: [default, min]
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -41,6 +44,8 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
+          # add min suffix
+          [ "${{ matrix.model_type }}" == "min" ] && $VERSION="$VERSION-min"
 
           echo ::set-output name=image::$IMAGE_ID:$VERSION
 
@@ -50,6 +55,8 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.prepare.outputs.image }}
+          build-args: |
+            modelType=${{ matrix.model_type }}
           platforms: linux/arm64,linux/amd64
           cache-from: type=gha
           cache-to: type=gha,mode=max

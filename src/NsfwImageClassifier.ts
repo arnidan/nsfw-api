@@ -2,10 +2,9 @@ import * as tf from '@tensorflow/tfjs-node';
 import * as nsfwjs from 'nsfwjs';
 import {NSFWJS} from 'nsfwjs';
 import {Tensor3D} from '@tensorflow/tfjs';
+import {model as config} from "app/config/model";
 
 tf.enableProdMode();
-
-const DEFAULT_MODEL_SIZE = 299;
 
 export class NsfwImageClassifier {
   #model?: NSFWJS;
@@ -29,9 +28,7 @@ export class NsfwImageClassifier {
 
   async #getModel(): Promise<NSFWJS> {
     if (!this.#model) {
-      const size = Number(process.env.MODEL_SIZE) || DEFAULT_MODEL_SIZE;
-
-      this.#model = await nsfwjs.load('file://model/', {size});
+      this.#model = await nsfwjs.load('file://model/', {size: config.size});
     }
 
     return this.#model;
