@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - master
-
-env:
-  IMAGE_NAME: nsfw-api
+  pull_request:
 
 jobs:
   build:
@@ -34,14 +32,16 @@ jobs:
       - name: Prepare
         id: prepare
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/${{ github.repository }}
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+          VERSION="${{ github.ref_name }}"
+          # Strip slash from tag name
+          [[ "${{ github.ref_type }}" == "branch" ]] && VERSION=$(echo $VERSION | sed 's/\//_/')
           # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+          [[ "${{ github.ref_type }}" == "tag" ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
           # add min suffix
