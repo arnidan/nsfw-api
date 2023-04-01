@@ -45,7 +45,7 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
           # add min suffix
-          [ "${{ matrix.model_type }}" == "min" ] && $VERSION="$VERSION-min"
+          [ "${{ matrix.model_type }}" == "min" ] && VERSION="$VERSION-min"
 
           echo ::set-output name=image::$IMAGE_ID:$VERSION
 
