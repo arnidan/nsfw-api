@@ -2,7 +2,7 @@ import * as tf from '@tensorflow/tfjs-node';
 import * as nsfwjs from 'nsfwjs';
 import {NSFWJS} from 'nsfwjs';
 import {Tensor3D} from '@tensorflow/tfjs';
-import {model as config} from "app/config/model";
+import {model as config} from 'app/config/model';
 
 tf.enableProdMode();
 
