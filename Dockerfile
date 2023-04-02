@@ -7,7 +7,12 @@ COPY yarn.lock package.json ./
 
 RUN npm_config_build_from_source=true yarn install --prod
 
-COPY . .
+COPY src ./src
+COPY tsconfig.json ./
+
+ARG modelType=default
+
+COPY ./models/$modelType ./model
 
 RUN yarn build
 
