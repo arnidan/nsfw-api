@@ -19,7 +19,7 @@
       "app/*": ["./src/*"]
     },
     "incremental": true,
-    "types": ["reflect-metadata"],
+    "types": ["reflect-metadata", "node"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true
